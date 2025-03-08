@@ -23,7 +23,19 @@ function createBox (num) {
             let green = Math.floor(Math.random() * 256);
             let blue = Math.floor(Math.random() * 256);
 
+            let opacity = item.style.opacity;
+            console.log("opacity: " + opacity);
+
             item.style.backgroundColor = "rgb(" +red+ ", " +green+ "," +blue+ ")";
+            if (!opacity) {
+                item.style.opacity = 1;
+            }
+            else if (opacity > 0){
+                item.style.opacity = opacity - 0.1;
+            }
+            else {
+                item.style.opacity = 0;
+            }
         })
     })
 }
