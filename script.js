@@ -14,10 +14,16 @@ function createBox (num) {
     }
     
     allCells = document.querySelectorAll(".cell");
+
+
     
     allCells.forEach((item) => {
         item.addEventListener('mouseover', () => {
-            item.classList.add("visited");
+            let red = Math.floor(Math.random() * 256);
+            let green = Math.floor(Math.random() * 256);
+            let blue = Math.floor(Math.random() * 256);
+
+            item.style.backgroundColor = "rgb(" +red+ ", " +green+ "," +blue+ ")";
         })
     })
 }
