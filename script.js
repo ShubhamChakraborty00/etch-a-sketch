@@ -1,20 +1,41 @@
 let container = document.querySelector("#container")
+let num = 16;
 
-for (let i=0; i<16; ++i) {
-    let row = document.createElement("div");
-    row.setAttribute("class", "row");
-    for (let j=0; j<16; ++j) {
-        let div = document.createElement("div");
-        div.setAttribute("class", "cell");
-        row.appendChild(div);
+function createBox (num) {
+    for (let i=0; i<num; ++i) {
+        let row = document.createElement("div");
+        row.setAttribute("class", "row");
+        for (let j=0; j<num; ++j) {
+            let div = document.createElement("div");
+            div.setAttribute("class", "cell");
+            row.appendChild(div);
+        }
+        container.appendChild(row);
     }
-    container.appendChild(row);
+    
+    allCells = document.querySelectorAll(".cell");
+    
+    allCells.forEach((item) => {
+        item.addEventListener('mouseover', () => {
+            item.classList.add("visited");
+        })
+    })
 }
 
-allCells = document.querySelectorAll(".cell");
+createBox(16);
 
-allCells.forEach((item) => {
-    item.addEventListener('mouseover', () => {
-        item.classList.add("visited");
-    })
+let btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+    num = prompt("Enter no. of squares per unit x. Box size: x*x. Min = 1, Max = 100");
+    
+    if (num > 100) {
+        num = 100;
+    }
+    else if (num < 1) {
+        num = 1;
+    }
+    
+    container.textContent = "";
+
+    createBox(num);
 })
